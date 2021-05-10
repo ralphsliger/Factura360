@@ -5,7 +5,7 @@ var port = process.env.PORT || 4201;
 
 var app = express();
 
-mongoose.connect('', (error,res)=>{
+mongoose.connect('mongodb+srv://sAdmin:fTGaAuVO5qmPLlrd@f360-cluster.jljrw.mongodb.net/DatabaseF360?retryWrites=true&w=majority',{useUnifiedTopology: true, useNewUrlParser: true}, (error,res)=>{
     if(error){
         throw error;
     } else{
@@ -20,4 +20,3 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 module.exports = app;
-
