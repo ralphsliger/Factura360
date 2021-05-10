@@ -13,10 +13,9 @@ function registrar(req, res){
                 user.apellidos = params.apellidos;
                 user.email = params.email;
                 user.role = params.role;
-
                 user.save((err, user_save)=>{
                     if(err){
-                        res.status(500).send({error: "No se ha ingresado el usuario"});
+                        res.status(400).send({error: "No se ha ingresado el usuario"});
                     }else{
                         res.status(200).send({user: user_save});
                     }
@@ -24,11 +23,39 @@ function registrar(req, res){
             }
         });
     } else{
-        res.status(403).send({error: "No ingreso su contraseña"});
+        res.status(400).send({error: "No ingreso su contraseña"});
     }
 
 }
 
+function login(req, res){
+    var params = req.body;
+
+    User.findOne({email: params.email}, (err, user_params)=>{
+        if(err){
+            res.status(400).send({message: 'Error, algo ha fallado'});
+        } else {
+            if(user_params){
+                bcrypt.compare(params.password, user_params.password, function(err, check){
+                    if(check){
+                        if(params.getToken){
+                            res.status(200).send({users: user_params});
+                        }else{
+                            res.status(200).send({user: user_params, message: 'No tiene token asignado'});
+                        }
+                        
+                    }else{
+                        res.status(400).send({message: 'La contraseña o el correo no coinciden'});
+                    }
+                });
+            }else {
+                res.status(400).send({message: 'La contraseña o el correo no coinciden'});
+            }
+        }
+    });
+}
+
 module.exports= {
-    registrar
+    registrar,
+    login,
 }
