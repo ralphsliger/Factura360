@@ -1,5 +1,6 @@
 var User = require('../models/user');
 var bcrypt = require('bcrypt-nodejs');
+var jwt = require('../helpers/jwt');
 
 function registrar(req, res){
     var params = req.body;
@@ -39,9 +40,17 @@ function login(req, res){
                 bcrypt.compare(params.password, user_params.password, function(err, check){
                     if(check){
                         if(params.getToken){
-                            res.status(200).send({users: user_params});
+                            res.status(200).send({
+                                jwt: jwt.createToken(user_params),
+                                users: user_params
+                            });
                         }else{
-                            res.status(200).send({user: user_params, message: 'No tiene token asignado'});
+                            res.status(200).send({
+                                user: user_params, 
+                                message: 'No tiene token asignado',
+                                jwt: jwt.createToken(user_params)
+
+                            });
                         }
                         
                     }else{
