@@ -14,4 +14,5 @@ api.post('/producto/registrar',path, productoController.registrar);
 api.get('/productos/:titulo?', productoController.listar); //puedes ver todos o uno en especifico 
 api.put('/producto/editar/:id',path, productoController.editar );
 api.get('/producto/registro/:id', productoController.getProducto);
+api.delete('/producto/:id', productoController.eliminar);
 module.exports = api;

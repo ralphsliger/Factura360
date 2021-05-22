@@ -140,10 +140,29 @@ function getProducto(req, res){
     });
 }
 
+function eliminar(req,res){
+
+    var id = req.params['id'];
+
+    Producto.findOneAndRemove({_id: id}, (err, producto_delete)=>{
+        if(err){
+            res.status(500).send({message: "error en el servidor"});
+        }else{
+            if(producto_delete){
+                res.status(200).send({producto: producto_delete});
+            }else{
+                res.status(403).send({message: 'no se ha eliminado ningun producto.'});
+            }
+        }
+        });
+    }
+
+
 module.exports = 
 {
     registrar,
     listar, 
     editar,
     getProducto,
+    eliminar,
 }
