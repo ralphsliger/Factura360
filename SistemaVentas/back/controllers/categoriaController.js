@@ -19,7 +19,7 @@ function registrar(req, res){
     });
 }
 
-function obtener_categoria(req, res){
+function obtener(req, res){
     var id = req.params['id'];
     console.log(id);
     Categoria.findById({_id: id},(err, categoriaData) =>{
@@ -35,7 +35,27 @@ function obtener_categoria(req, res){
     });
 }
 
+
+function editar(req, res){
+    var id = req.params['id'];
+    var data = req.body;
+
+    Categoria.findByIdAndUpdate({_id: id}, {titulo: data.titulo, descripcion: data.descripcion}, (err, categoria_edit)=>{
+        if(err){
+            res.status(500).send({message: "error en el servidor"});
+        }else{
+            if(categoria_edit){
+                res.status(200).send({categoria: categoria_edit});
+            }else{
+                res.status(403).send({message: "la categoria no se puedo actualizar"});
+            }
+        }
+    });
+
+}
+
 module.exports = {
     registrar,
-    obtener_categoria,
+    obtener,
+    editar,
 }

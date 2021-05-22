@@ -4,5 +4,6 @@ var categoriaController = require('../controllers/categoriaController');
 var api = express.Router();
 
 api.post('/categoria/registrar', categoriaController.registrar);
-api.get('/categoria/:id', categoriaController.obtener_categoria);
+api.get('/categoria/:id', categoriaController.obtener);
+api.put('/categoria/editar/:id', categoriaController.editar);
 module.exports = api; 
