@@ -54,8 +54,25 @@ function editar(req, res){
 
 }
 
+
+function  eliminar(req, res){
+    var id = req.params['id'];
+    Categoria.findByIdAndDelete({_id:id},(err, categoria_delete)=>{
+        if(err){
+            res.status(500).send({message: 'Error en el servidr'});
+        }else{
+            if(categoria_delete){
+                res.status(200).send({categoria: categoria_delete});
+            }else{
+                res.status(403).send({message: 'No se pudo eliminar el registro'});
+            }
+        }
+    });
+}
+
 module.exports = {
     registrar,
     obtener,
     editar,
+    eliminar,
 }
