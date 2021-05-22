@@ -13,4 +13,5 @@ var api = express.Router();
 api.post('/producto/registrar',path, productoController.registrar);
 api.get('/productos/:titulo?', productoController.listar); //puedes ver todos o uno en especifico 
 api.put('/producto/editar/:id',path, productoController.editar );
+api.get('/producto/registro/:id', productoController.getProducto);
 module.exports = api;

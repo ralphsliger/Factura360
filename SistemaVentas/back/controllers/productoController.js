@@ -78,7 +78,7 @@ function editar(req,res){
         var imagen_path = req.files.imagen.path;
         var nombre = imagen_path.split('\\');
         var nombre_imagen = nombre[2];
-        
+
         Producto.findByIdAndUpdate({_id: id}, 
                 {
                 titulo: data.titulo, 
@@ -124,9 +124,26 @@ function editar(req,res){
     
 }
 
+function getProducto(req, res){
+    var idproducto = req.params['id'];
+
+    Producto.findOne({_id: idproducto}, (err, producto_data) =>{
+        if(err){
+            res.status(500).send({message: "error en el servidor"});
+        }else{
+            if(producto_data){
+                res.status(200).send({producto: producto_data});
+            }else{
+                res.status(403).send({message: 'no se han encontrado el producto.'});
+            }
+        }
+    });
+}
+
 module.exports = 
 {
     registrar,
     listar, 
     editar,
+    getProducto,
 }
