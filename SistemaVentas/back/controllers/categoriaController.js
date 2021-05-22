@@ -70,9 +70,27 @@ function  eliminar(req, res){
     });
 }
 
+
+function listar(req, res){
+    var titulo = req.params['titulo'];
+
+    Categoria.find({titulo: new RegExp(titulo, 'i')}, (err, categoria_lista) => {
+        if(err){
+            res.status(500).send({message: "Error en el servidor"});
+        }else{
+            if(categoria_lista){
+       res.status(200).send({categorias: categoria_lista});
+        } else{
+            res.status(403).send({message: "no se encuentran categorias con la descripcion suministrada"});
+        } 
+    }
+    });
+}
+
 module.exports = {
     registrar,
     obtener,
     editar,
     eliminar,
+    listar,
 }
