@@ -8,7 +8,7 @@ function registrar(req, res){
         var imagen_path = req.files.imagen.path;
         var name = imagen_path.split('\\');
         var imagen = name[2];
-        
+
         var producto = new Producto();
         producto.titulo = data.titulo;
         producto.descripcion = data.descripcion;
@@ -55,7 +55,78 @@ function registrar(req, res){
     }
 }
 
+function listar(req,res){
+    var titulo = req.params['titulo'];
+    Producto.find({titulo: new RegExp(titulo, 'i')}, (err, producto_lista)=>{
+        if(err){
+            res.status(500).send({message: "error en el servidor"});
+        }else{
+            if(producto_lista){
+                res.status(200).send({producto: producto_lista});
+            }else{
+                res.status(403).send({message: 'no se han encontrado los productos.'});
+            }
+        }
+    });
+}
+
+function editar(req,res){
+    var data = req.body;
+    var id = req.params['id'];
+
+    if(req.files){
+        var imagen_path = req.files.imagen.path;
+        var nombre = imagen_path.split('\\');
+        var nombre_imagen = nombre[2];
+        
+        Producto.findByIdAndUpdate({_id: id}, 
+                {
+                titulo: data.titulo, 
+                descripcion: data.descripcion, 
+                imagen: nombre_imagen, 
+                precio_compra: data.precio_compra, 
+                precio_venta: data.precio_venta, 
+                stock: data.stock,
+                idcategoria: data.idcategoria,
+                puntos: data.puntos}, (err, producto_actualizado)=>{
+                    if(err){
+                    res.status(500).send({message: "error en el servidor"});
+                    console.log(err);
+                    }else{
+                        if(producto_actualizado){
+                        res.status(200).send({producto: producto_actualizado});
+                    }else{
+                            res.status(403).send({message: 'no se han editado los productos.'});
+                        }
+                    }
+                });
+    }else{
+        Producto.findByIdAndUpdate({_id: id}, 
+            {titulo: data.titulo, 
+                descripcion: data.descripcion, 
+                imagen: nombre_imagen, 
+                precio_compra: data.precio_compra, 
+                precio_venta: data.precio_venta, 
+                stock: data.stock,
+                idcategoria: data.idcategoria,
+                puntos: data.puntos}, (err, producto_actualizado)=>{
+                    if(err){
+                    console.log(err);
+                    res.status(500).send({message: "error en el servidor"});
+                    }else{
+                        if(producto_actualizado){
+                        res.status(200).send({producto: producto_actualizado});}else{
+                            res.status(403).send({message: 'no se han editado los productos.'});
+                        }
+                    }
+                });
+    }
+    
+}
+
 module.exports = 
 {
     registrar,
+    listar, 
+    editar,
 }

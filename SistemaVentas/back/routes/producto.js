@@ -10,6 +10,7 @@ var path = multipart({uploadDir: './uploads/productos'});
 var api = express.Router();
 
 // paso el metodo del controlador a la ruta
-api.post('/producto/registrar', productoController.registrar);
-
+api.post('/producto/registrar',path, productoController.registrar);
+api.get('/productos/:titulo?', productoController.listar); //puedes ver todos o uno en especifico 
+api.put('/producto/editar/:id',path, productoController.editar );
 module.exports = api;
