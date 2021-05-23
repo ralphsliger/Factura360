@@ -7,6 +7,7 @@ var ClienteSchema = Schema({
     cedula: String,
     correo: String,
     puntos: Number,
+    createAt: {type: Date, default: Date.now}
 });
 
 module.exports = mongoose.model('cliente', ClienteSchema);
