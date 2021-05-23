@@ -9,7 +9,11 @@ var categoria_routes = require('./routes/categoria');
 var producto_routes = require('./routes/producto');
 
 // Conexion bd
-mongoose.connect('mongodb+srv://sAdmin:fTGaAuVO5qmPLlrd@f360-cluster.jljrw.mongodb.net/DatabaseF360?retryWrites=true&w=majority',{useUnifiedTopology: true, useNewUrlParser: true}, (error,res)=>{
+
+var antinguasrv = 'mongodb+srv://sAdmin:fTGaAuVO5qmPLlrd@f360-cluster.jljrw.mongodb.net/DatabaseF360?retryWrites=true&w=majority'
+
+
+mongoose.connect(antinguasrv,{useUnifiedTopology: true, useNewUrlParser: true}, (error,res)=>{
     if(error){
         throw error;
     } else{

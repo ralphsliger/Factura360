@@ -1,4 +1,5 @@
 var Producto = require('../models/Producto');
+var fs = require('fs');
 
 function registrar(req, res){
     var data = req.body;
@@ -73,8 +74,12 @@ function listar(req,res){
 function editar(req,res){
     var data = req.body;
     var id = req.params['id'];
+    var img = req.params['img'];
 
     if(req.files){
+        fs.unlink('./uploads/productos/'+img, (err)=>{
+            if(err) throw err;
+        });
         var imagen_path = req.files.imagen.path;
         var nombre = imagen_path.split('\\');
         var nombre_imagen = nombre[2];
@@ -149,6 +154,9 @@ function eliminar(req,res){
             res.status(500).send({message: "error en el servidor"});
         }else{
             if(producto_delete){
+                fs.unlink('./uploads/productos/'+producto_delete.imagen, (err)=>{
+                    if(err) throw err;
+                });
                 res.status(200).send({producto: producto_delete});
             }else{
                 res.status(403).send({message: 'no se ha eliminado ningun producto.'});
@@ -157,6 +165,28 @@ function eliminar(req,res){
         });
     }
 
+    function updateStock(req, res){
+        let id = req.params['id'];
+        let data = req.body;
+
+        Producto.findById(id,(err,producto_data)=>{
+            if(producto_data){
+                Producto.findByIdAndUpdate(id, {stock: parseInt(producto_data.stock) + parseInt(data.stock)}, (err,producto_edit)=>{
+                    if(producto_edit){
+                        res.status(200).send({producto: producto_edit});
+                    }else{
+                        res.status(403).send(err); 
+                    }
+                })
+            }else{
+                res.status(500).send(err);
+            }
+        })
+
+    }
+
+           
+    
 
 module.exports = 
 {
@@ -165,4 +195,5 @@ module.exports =
     editar,
     getProducto,
     eliminar,
+    updateStock,
 }
