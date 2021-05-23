@@ -1,5 +1,6 @@
 var Producto = require('../models/Producto');
 var fs = require('fs');
+var path= require('path');
 
 function registrar(req, res){
     var data = req.body;
@@ -185,7 +186,17 @@ function eliminar(req,res){
 
     }
 
-           
+          
+    function imagenProducto(req, res){
+        var img = req.params['img'];
+        if(img != "null"){
+            let path_img = './uploads/productos' + img;
+            res.status(200).sendFile(path.resolve(path_img));
+        }else{
+            let path_img = './uploads/productos/default.jpeg';
+            res.status(200).sendFile(path.resolve(path_img));
+        }
+    }
     
 
 module.exports = 
@@ -196,4 +207,6 @@ module.exports =
     getProducto,
     eliminar,
     updateStock,
+    imagenProducto
+
 }

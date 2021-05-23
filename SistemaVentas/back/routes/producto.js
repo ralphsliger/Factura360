@@ -16,4 +16,5 @@ api.put('/producto/editar/:id/:img',path, productoController.editar );
 api.get('/producto/registro/:id', productoController.getProducto);
 api.delete('/producto/:id', productoController.eliminar);
 api.put('/producto/stock/:id', productoController.updateStock);
+api.get('/producto/img/:img', productoController.imagenProducto);
 module.exports = api;
