@@ -8,4 +8,5 @@ var api = express.Router();
 api.post('/signup', userController.registrar);
 api.post('/login', userController.login);
 
+
 module.exports = api;
