@@ -37,7 +37,19 @@ Cliente.findOneAndUpdate(id, {nombres: data.nombres, correo: data.correo} , (err
 
 }
 
+function eliminar(req, res){
+    var id = req.params['id'];
+    Cliente.findByIdAndRemove(id,(err, cliente_delete)=>{
+        if(cliente_delete){
+            res.status(200).send({cliente: cliente_delete});
+        }else{
+            res.status(500).send(err);
+        }
+    });
+}
+
 module.exports= {
 registrar,
 editar, 
+eliminar,
 }
