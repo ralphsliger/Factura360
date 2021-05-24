@@ -64,7 +64,7 @@ function listar(req,res){
             res.status(500).send({message: "error en el servidor"});
         }else{
             if(producto_lista){
-                res.status(200).send({producto: producto_lista});
+                res.status(200).send({productos: producto_lista});
             }else{
                 res.status(403).send({message: 'no se han encontrado los productos.'});
             }
