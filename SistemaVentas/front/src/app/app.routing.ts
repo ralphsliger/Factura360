@@ -3,12 +3,13 @@ import { ModuleWithProviders } from "@angular/core";
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductoIndexComponent } from './components/productos/producto-index/producto-index.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ProductoCreateComponent } from "./components/productos/producto-create/producto-create.component";
 
 const appRoute : Routes = [
     {path: '', component: LoginComponent},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'productos', component: ProductoIndexComponent},
+    {path: 'producto/registrar', component: ProductoCreateComponent }
     
 ]
 
