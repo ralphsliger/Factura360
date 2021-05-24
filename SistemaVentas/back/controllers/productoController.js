@@ -59,7 +59,7 @@ function registrar(req, res){
 
 function listar(req,res){
     var titulo = req.params['titulo'];
-    Producto.find({titulo: new RegExp(titulo, 'i')}, (err, producto_lista)=>{
+    Producto.find({titulo: new RegExp(titulo, 'i')}).populate('idcategoria').exec((err, producto_lista)=>{
         if(err){
             res.status(500).send({message: "error en el servidor"});
         }else{
