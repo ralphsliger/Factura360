@@ -37,7 +37,7 @@ export class ProductoCreateComponent implements OnInit {
     this.is_error= '';
 
   }
-  succes_alert(){
+  success_alert(){
     this.is_save= '';
   }
 
