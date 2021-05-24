@@ -31,11 +31,23 @@ export class UserService {
      return this._http.post(this.url + '/login', json,{headers: headers});
    }
 
-   getToken(){
-
+   getToken():Observable<any>{
+    let token = localStorage.getItem('token');
+    if(token){
+      this.token= token;
+    }else{
+      this.token = null;
+    }
+    return this.token;
    }
 
-   getIdentity(){
-
+   getIdentity():Observable<any>{
+    let identity = JSON.parse(localStorage.getItem('identity'));
+    if(identity){
+      this.identity= identity;
+    }else{
+      this.identity = null;
+    }
+    return this.identity;
    }
 }
