@@ -43,7 +43,7 @@ export class ProductoCreateComponent implements OnInit {
 
   onSubmit(productoForm){
     if(productoForm.valid){
-      this._productoService.post_productos(
+      this._productoService.insert_producto(
         {
         titulo: productoForm.value.titulo,
         descripcion: productoForm.value.descripcion,
