@@ -12,9 +12,13 @@ import { ProductoIndexComponent } from './components/productos/producto-index/pr
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProductoCreateComponent } from './components/productos/producto-create/producto-create.component';
 import { ProductoEditComponent } from './components/productos/producto-edit/producto-edit.component';
-import { ClienteCreateComponent } from './clientes/cliente-create/cliente-create.component';
-import { ClienteEditComponent } from './clientes/cliente-edit/cliente-edit.component';
-import { ClienteIndexComponent } from './clientes/cliente-index/cliente-index.component';
+import { ClienteCreateComponent } from './components/clientes/cliente-create/cliente-create.component';
+import { ClienteEditComponent } from './components/clientes/cliente-edit/cliente-edit.component';
+import { ClienteIndexComponent } from './components/clientes/cliente-index/cliente-index.component';
+import { UsersComponent } from './components/users/users.component';
+import { UserCreateComponent } from './components/users/user-create/user-create.component';
+import { UserEditComponent } from './components/users/user-edit/user-edit.component';
+import { UserIndexComponent } from './components/users/user-index/user-index.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { ClienteIndexComponent } from './clientes/cliente-index/cliente-index.co
     ProductoEditComponent,
     ClienteCreateComponent,
     ClienteEditComponent,
-    ClienteIndexComponent
+    ClienteIndexComponent,
+    UsersComponent,
+    UserCreateComponent,
+    UserEditComponent,
+    UserIndexComponent
   ],
   imports: [
     BrowserModule,
