@@ -12,6 +12,9 @@ import { ProductoIndexComponent } from './components/productos/producto-index/pr
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProductoCreateComponent } from './components/productos/producto-create/producto-create.component';
 import { ProductoEditComponent } from './components/productos/producto-edit/producto-edit.component';
+import { ClienteCreateComponent } from './clientes/cliente-create/cliente-create.component';
+import { ClienteEditComponent } from './clientes/cliente-edit/cliente-edit.component';
+import { ClienteIndexComponent } from './clientes/cliente-index/cliente-index.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { ProductoEditComponent } from './components/productos/producto-edit/prod
     ProductoIndexComponent,
     SidebarComponent,
     ProductoCreateComponent,
-    ProductoEditComponent
+    ProductoEditComponent,
+    ClienteCreateComponent,
+    ClienteEditComponent,
+    ClienteIndexComponent
   ],
   imports: [
     BrowserModule,
