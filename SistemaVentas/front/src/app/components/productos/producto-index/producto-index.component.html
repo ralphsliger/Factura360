@@ -41,7 +41,7 @@
                                         <h5 class="card-title">Filtro de productos</h5>
                                         <form #searchForm="ngForm" (ngSubmit)="search(searchForm)">
                                             <div class="input-group date" id="datetimepicker-minimum" data-target-input="nearest">
-                                                <input type="text" class="form-control datetimepicker-input" #filtro="ngModel" name="filtro" [(ngModel)]="filtroText">
+                                                <input type="text" class="form-control datetimepicker-input" #filtro="ngModel" name="filtro" (ngModel)="filtro">
                                                 <div class="input-group-append">
                                        
                                                     <button type="submit" class="input-group-text"><i class="fa fa-search"></i></button>
