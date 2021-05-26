@@ -1,5 +1,6 @@
 
-#F360
+# Factura 360
+
 ![logo](https://user-images.githubusercontent.com/8931588/119693261-baa48e00-be11-11eb-9328-7233cd1acff6.png)
 
 Es un Sistema de Facturacion e Inventarios para tu negocio desarrollado en MEAN. (MONGO, EXPRESS, ANGULAR, NODEJS) y Un Dashboard hecho en Dash.
