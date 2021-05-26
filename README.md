@@ -31,7 +31,7 @@ La estructura del proyecto esta organizado de acuerdo a cada servicio
       - Uploads (Carpeta para guardar archivos) 
       
       
-     #### Frontend 
+   #### Frontend 
     - Front (Carpeta Frontend - Angular)
       - SRC (Directorio Global Proyecto)
         - app (Codigo Proyecto)
@@ -49,8 +49,8 @@ La estructura del proyecto esta organizado de acuerdo a cada servicio
         - assets (Utilidades proyecto: Css, Fonts, Imgs)
         - enviroments (Configuraciones)
         
-     #### Dashboard Dash
-        
+   #### Dashboard Dash
+       
     - dashapp (carpeta global)
       - nuevodash.py (Dashboard de Restaurantes)
       - restaurant-1-orders.csv (Dataset restaurantes new york)
@@ -59,9 +59,9 @@ La estructura del proyecto esta organizado de acuerdo a cada servicio
 
  
  
- # Iniciar proyecto
+# Iniciar proyecto
  
- ## Correr Backend 
+## Correr Backend 
  Primero ingresamos a la carpeta back
  `cd back`
  
@@ -72,7 +72,7 @@ La estructura del proyecto esta organizado de acuerdo a cada servicio
  `npm start`
 
 
- ## Correr Frontend 
+## Correr Frontend 
  En otra terminal, es necesario correr las dos al tiempo
  Primero ingresamos a la carpeta front
  `cd front`
@@ -97,5 +97,7 @@ En otra terminal
 ### Iniciar servidor
 `python nuevodash.py`
 
-## Preview Proyecto
+# Preview Proyecto
+![Captura de Pantalla 2021-05-26 a la(s) 10 54 23 a  m](https://user-images.githubusercontent.com/8931588/119692490-13275b80-be11-11eb-8d8f-00e9c77e89fe.png)
+
 
