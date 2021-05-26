@@ -41,7 +41,7 @@
                                         <h5 class="card-title">Filtro de productos</h5>
                                         <form #searchForm="ngForm" (ngSubmit)="search(searchForm)">
                                             <div class="input-group date" id="datetimepicker-minimum" data-target-input="nearest">
-                                                <input type="text" class="form-control datetimepicker-input" #filtro="ngModel" name="filtro" (ngModel)="filtro">
+                                                <input type="text" class="form-control datetimepicker-input" #filtro="ngModel" name="filtro" [(ngModel)]="filtroText">
                                                 <div class="input-group-append">
                                        
                                                     <button type="submit" class="input-group-text"><i class="fa fa-search"></i></button>
@@ -95,7 +95,7 @@
                                                 </div>
                                             </div>
                                         </td>  
-                                      
+                                        <!--MODAL AUMENTAR STOCK-->
                                         <div class="modal fade" [attr.id]="'modal-stock-'+idx" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
                                             <form #stockForm="ngForm" (ngSubmit)="aumentar_stock(stockForm)">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -108,7 +108,7 @@
                                                         </div>
                                                         <div class="modal-body m-3">
                                                         <div class="form-group">
-                                                            <input type="number" class="form-control" placeholder="Titulo de la categoria" #producto_stock="ngModel" name="producto_stock" (ngModel)="producto_stock" required>
+                                                            <input type="number" class="form-control" placeholder="Titulo de la categoria" #producto_stock="ngModel" name="producto_stock" [(ngModel)]="producto_stockText" required>
                                                         </div>
                                                             
                                                         </div>
@@ -120,7 +120,7 @@
                                                 </div>
                                             </form>
                                         </div>
-                                       
+                                        <!--MODAL AUMENTAR STOCK-->
                           
                                 </tbody>
                             </table>
@@ -130,7 +130,7 @@
                 </div>
 
 
-                 
+                 <!--MODAL AGREGAR CATEGORIA-->
                  <div class="modal fade" id="modal-save-categoria" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
                     <form #categoriaForm="ngForm" (ngSubmit)="save_cat(categoriaForm)">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -143,10 +143,10 @@
                                 </div>
                                 <div class="modal-body m-3">
                                    <div class="form-group">
-                                       <input type="text" class="form-control" placeholder="Titulo de la categoria" #titulo_cat="ngModel" name="titulo_cat" (ngModel)="titulo_cat" required>
+                                       <input type="text" class="form-control" placeholder="Titulo de la categoria" #titulo_cat="ngModel" name="titulo_cat" [(ngModel)]="titulo_catText" required>
                                    </div>
                                    <div class="form-group">
-                                        <textarea class="form-control" placeholder="Breve descripcion" #descripcion_cat="ngModel" name="descripcion_cat" (ngModel)="descripcion_cat" required></textarea>
+                                        <textarea class="form-control" placeholder="Breve descripcion" #descripcion_cat="ngModel" name="descripcion_cat" [(ngModel)]="descripcion_catText" required></textarea>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -157,9 +157,9 @@
                         </div>
                     </form>
                 </div>
-            
+                <!--MODAL AGREGAR CATEGORIA-->
 
-                
+                <!--MODAL LISTAR CATEGORIA-->
                 <div class="modal fade" id="modal-data-categoria" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollablea" role="document">
                         <div class="modal-content">
@@ -186,7 +186,7 @@
                         </div>
                     </div>
                 </div>
-                
+                <!--MODAL LISTAR CATEGORIA-->
 
                
             </div>

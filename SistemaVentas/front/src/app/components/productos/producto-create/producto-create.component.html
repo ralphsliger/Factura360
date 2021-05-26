@@ -16,17 +16,17 @@
                     </h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="dashboard-default.html">Dashboard</a></li>
                             <li class="breadcrumb-item"><a [routerLink]="['/productos']">Productos</a></li>
                             <li class="breadcrumb-item"><a>Registro de productos</a></li>
                         </ol>
                     </nav>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-lg-12" *ngIf="is_error">
+                    <div class="col-12 col-lg-12" *ngIf="error_message">
                         <div class="alert alert-danger alert-dismissible" role="alert">
                             <div class="alert-message">
-                                {{is_error}}
+                                {{error_message}}
                             </div>
 
                             <button type="button" (click)="error_alert()" class="close" data-dismiss="alert" aria-label="Close">
@@ -34,10 +34,10 @@
                             </button>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-12" *ngIf="is_save">
+                    <div class="col-12 col-lg-12" *ngIf="success_message">
                         <div class="alert alert-info alert-dismissible" role="alert">
                             <div class="alert-message">
-                                {{is_save}}
+                                {{success_message}}
                             </div>
 
                             <button type="button" class="close" (click)="success_alert()" data-dismiss="alert" aria-label="Close">
@@ -57,36 +57,35 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-label">Titulo del producto</label>
-                                                <input type="text" class="form-control" placeholder="Ingrese el titulo del producto" #titulo="ngModel" name="titulo" (ngModel)="producto.titulo" required>
+                                                <input type="text" class="form-control" placeholder="Ingrese el titulo del producto" #titulo="ngModel" name="titulo" [(ngModel)]="producto.titulo" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-label">Precio compra</label>
-                                                <input type="number" class="form-control" placeholder="$0"  #precio_compra="ngModel" name="precio_compra" (ngModel)="producto.precio_compra" required>
+                                                <input type="number" class="form-control" placeholder="$0"  #precio_compra="ngModel" name="precio_compra" [(ngModel)]="producto.precio_compra" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-label">Precio venta</label>
-                                                <input type="number" class="form-control" placeholder="$0"  #precio_venta="ngModel" name="precio_venta" (ngModel)="producto.precio_venta" required>
+                                                <input type="number" class="form-control" placeholder="$0"  #precio_venta="ngModel" name="precio_venta" [(ngModel)]="producto.precio_venta" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <label class="form-label">Stock</label>
-                                            <input type="number" class="form-control" placeholder="0"  #stock="ngModel" name="stock" (ngModel)="producto.stock" required>
+                                            <label class="form-label">Cantidad</label>
+                                            <input type="number" class="form-control" placeholder="0"  #stock="ngModel" name="stock" [(ngModel)]="producto.stock" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Descripcion</label>
-                                        <textarea class="form-control" placeholder="Breve descripcion"  #descripcion="ngModel" name="descripcion" (ngModel)="producto.descripcion"> required</textarea>
+                                        <textarea class="form-control" placeholder="Breve descripcion"  #descripcion="ngModel" name="descripcion" [(ngModel)]="producto.descripcion"> required</textarea>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-label">Categoria</label>
-                                                <select class="form-control"  #idcategoria="ngModel" required name="idcategoria" (ngModel)="producto.idcategoria">
-                
+                                                <select class="form-control"  #idcategoria="ngModel" required name="idcategoria" [(ngModel)]="producto.idcategoria">
                                                     <option value="{{item._id}}" *ngFor="let item of categorias">{{item.titulo.toUpperCase()}}</option>
                                                 </select>
                                             </div>
@@ -94,7 +93,7 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-label">Puntos</label>
-                                                <input type="number" required class="form-control"  #puntos="ngModel" name="puntos" (ngModel)="producto.puntos">
+                                                <input type="number" required class="form-control"  #puntos="ngModel" name="puntos" [(ngModel)]="producto.puntos">
                                             </div>
                                         </div>
                                     </div>
@@ -112,12 +111,12 @@
                             </div>
                             <div class="card-body">
                                 <div class="text-center">
-                                    <img [src]="imgSelect || '../../../../assets/img/default.jpeg'" class="rounded-circle img-responsive mt-2" width="128" height="128">
+                                    <img alt="Chris Wood" [src]="imgSelect || '../../../../assets/img/default.jpg'" class="rounded-circle img-responsive mt-2" width="128" height="128">
                                     <div class="mt-2">
                                         <input class="btn btn-primary" required (change)="imgSelected($event)" type="file" style="width: 100% !important;">
                                     </div>
-                                    <small>For best results, use an image at least 128px by 128px in .jpg
-                                    format</small>
+                                    <small>Para mejores resultados, use una imagen al menos de 128px * 128px en formato .jpg
+                                    </small>
                                 </div>
                             </div>
                         </div>

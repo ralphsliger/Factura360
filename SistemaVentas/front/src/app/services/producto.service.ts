@@ -61,17 +61,17 @@ export class ProductoService {
 
   insert_categoria(data):Observable<any>{
     let headers = new HttpHeaders().set('Content-Type','application/json');
-    return this._http.post(this.url+'/categoria/registrar',data,{headers:headers});
+    return this._http.post(this.url+'categoria/registrar',data,{headers:headers});
   }
 
   delete_producto(id):Observable<any>{
     let headers = new HttpHeaders().set('Content-Type','application/json');
-    return this._http.delete(this.url+'/producto/'+id,{headers:headers});
+    return this._http.delete(this.url+'producto/'+id,{headers:headers});
   }
 
   stock_producto(data):Observable<any>{
     let headers = new HttpHeaders().set('Content-Type','application/json');
-    return this._http.put(this.url+'/producto/stock/'+data._id,data,{headers:headers});
+    return this._http.put(this.url+'producto/stock/'+data._id,data,{headers:headers});
   }
 
 

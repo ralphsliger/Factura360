@@ -3,7 +3,7 @@ export class Cliente{
         public _id:string,
         public nombres:string,
         public correo:string,
-        public cedula: string,
+        public dni: string,
         public puntos:number,
     ){
 

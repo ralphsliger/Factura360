@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule } from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
-import { routing } from './app.routing';
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
+
+import { routing } from "./app.routing";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,13 +13,17 @@ import { ProductoIndexComponent } from './components/productos/producto-index/pr
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProductoCreateComponent } from './components/productos/producto-create/producto-create.component';
 import { ProductoEditComponent } from './components/productos/producto-edit/producto-edit.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ClienteIndexComponent } from './components/clientes/cliente-index/cliente-index.component';
 import { ClienteCreateComponent } from './components/clientes/cliente-create/cliente-create.component';
 import { ClienteEditComponent } from './components/clientes/cliente-edit/cliente-edit.component';
-import { ClienteIndexComponent } from './components/clientes/cliente-index/cliente-index.component';
-import { UsersComponent } from './components/users/users.component';
+import { UserIndexComponent } from './components/users/user-index/user-index.component';
 import { UserCreateComponent } from './components/users/user-create/user-create.component';
 import { UserEditComponent } from './components/users/user-edit/user-edit.component';
-import { UserIndexComponent } from './components/users/user-index/user-index.component';
+import { VentaIndexComponent } from './components/ventas/venta-index/venta-index.component';
+import { VentaCreateComponent } from './components/ventas/venta-create/venta-create.component';
+import { VentaDetalleComponent } from './components/ventas/venta-detalle/venta-detalle.component';
+
 
 @NgModule({
   declarations: [
@@ -29,13 +34,17 @@ import { UserIndexComponent } from './components/users/user-index/user-index.com
     SidebarComponent,
     ProductoCreateComponent,
     ProductoEditComponent,
+    ClienteIndexComponent,
     ClienteCreateComponent,
     ClienteEditComponent,
-    ClienteIndexComponent,
-    UsersComponent,
+    UserIndexComponent,
     UserCreateComponent,
     UserEditComponent,
-    UserIndexComponent
+    VentaIndexComponent,
+    VentaCreateComponent,
+    VentaDetalleComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -43,6 +52,7 @@ import { UserIndexComponent } from './components/users/user-index/user-index.com
     HttpClientModule,
     FormsModule,
     routing,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
